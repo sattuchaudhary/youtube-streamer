@@ -89,6 +89,15 @@ import fs from 'fs';
 import path from 'path';
 import { pipeline } from 'stream/promises';
 import dotenv from 'dotenv';
+import VideoValidator from './videoValidator.js';
+
+// वीडियो वैलिडेट करें
+const isValid = VideoValidator.validateVideoFile('video.mp4');
+
+// अगर इनवैलिड है तो कनवर्ट करें
+if (!isValid) {
+    VideoValidator.convertVideo('video.mp4', 'converted_video.mp4');
+}
 
 dotenv.config();
 
